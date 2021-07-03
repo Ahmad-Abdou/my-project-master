@@ -1,0 +1,76 @@
+.whole-page {
+}
+.movies-info {
+  display: inline-block;
+  padding: 20px;
+  text-align: center;
+  padding: 10px 20px;
+  transition-duration: 1s;
+  margin: 10px;
+  border: 2px solid white;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.747);
+}
+.movies-info:hover {
+  transform: scale(1.1);
+}
+.img-container img {
+  width: 251px;
+  height: 110px;
+  transition-duration: 1s;
+}
+
+.title {
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+}
+
+.price {
+  color: rgb(212, 60, 60);
+  font-size: 20px;
+}
+.wish-btn {
+  border: 2px solid rgb(110, 112, 0);
+  padding: 10px;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  background-color: gold;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+.buy-btn {
+  border: 2px solid rgb(14, 224, 25);
+  padding: 10px;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  background-color: rgb(14, 224, 25);
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.buy-btn:hover {
+  transform: scale(1.1);
+}
+.wish-btn:hover {
+  transform: scale(1.1);
+}
+.loading-icon {
+  color: rgb(252, 0, 0);
+  font-size: 50px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transition-duration: 1000ms;
+  animation: rotatingZ 0.5s linear infinite;
+}
+
+@keyframes rotatingZ {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
