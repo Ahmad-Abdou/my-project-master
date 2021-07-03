@@ -15,6 +15,7 @@ function Cart() {
   const increase = (index) => {
     const newItems = [...myArray];
     newItems[index].quantity++;
+    console.log();
     setMyArray(newItems);
   };
   const decrease = (index, id) => {
@@ -100,7 +101,7 @@ function Cart() {
 
                   <tr>
                     <td>
-                      <p className="sum">{Math.round(getPrice * 100) / 100}$</p>
+                      {/* <p className="sum">{Math.round(getPrice * 100) / 100}$</p> */}
                     </td>
                     <td>
                       <button

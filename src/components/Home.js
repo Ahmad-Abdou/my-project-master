@@ -15,11 +15,15 @@ function Home() {
 
   const fetchUserProfile = () => {
     isLoading(true);
-    axios.get("http://movieshop-env.eba-y5zzn5ds.us-east-2.elasticbeanstalk.com/api/movie").then((res) => {
-      console.log(res);
-      setData(res.data);
-      isLoading(false);
-    });
+    axios
+      .get(
+        "http://movieshop-env.eba-y5zzn5ds.us-east-2.elasticbeanstalk.com/api/movie"
+      )
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+        isLoading(false);
+      });
   };
 
   useEffect(() => {
