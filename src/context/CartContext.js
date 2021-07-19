@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import movies from "../data";
 import axios from "axios";
 const AppContext = React.createContext();
 
@@ -10,14 +9,9 @@ const AppProvider = ({ children }) => {
   const [data, setData] = useState([]);
 
   const fetchUserProfile = () => {
-    axios
-      .get(
-        "http://movieshop-env.eba-y5zzn5ds.us-east-2.elasticbeanstalk.com/api/movie"
-      )
-      .then((res) => {
-        setData(res.data);
-        console.log(res.data);
-      });
+    axios.get("http://localhost:8080/api/movie").then((res) => {
+      setData(res.data);
+    });
   };
 
   useEffect(() => {

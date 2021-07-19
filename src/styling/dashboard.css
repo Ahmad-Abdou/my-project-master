@@ -1,0 +1,173 @@
+.dashboard-container {
+  width: 80%;
+  padding: 2rem;
+}
+
+.item-col {
+  color: rgb(255, 255, 255);
+  background-color: gray;
+  margin: 50px;
+  padding: 3rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  text-align: center;
+}
+.my-icons {
+  font-size: 50px;
+}
+.trash-icon {
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+}
+.edit-icon {
+  font-size: 30px;
+  color: rgb(5, 255, 67);
+  cursor: pointer;
+}
+.my-alert {
+  width: 47%;
+  position: fixed;
+  top: 30%;
+  left: 28%;
+  animation: alert 5s;
+  z-index: 1;
+}
+@keyframes alert {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.adding-movie-container {
+  width: 50% !important;
+  padding: 3rem;
+  border-radius: 10px;
+  background-color: rgb(88, 88, 88);
+  display: inline-block;
+  position: fixed;
+  top: 20%;
+  left: 30%;
+}
+.dashboard-table {
+  padding: 2rem;
+}
+@media (min-width: 500px) {
+  .dashboard-table {
+    padding: 0;
+    font-size: 8px;
+    position: relative;
+    left: 38px;
+  }
+  .my-icons,
+  .edit-icon,
+  .trash-icon {
+    font-size: 10px;
+  }
+  .trash-icon {
+    margin-bottom: 50px;
+  }
+  .table-heading {
+    font-size: 8px;
+  }
+  .item-col {
+    margin: 5px;
+  }
+  .square-info {
+    font-size: 15px;
+  }
+}
+@media (min-width: 700px) {
+  .dashboard-table {
+    padding: 2;
+    font-size: 10px;
+    position: relative;
+    left: 125px;
+  }
+  .my-icons,
+  .edit-icon,
+  .trash-icon {
+    font-size: 12px;
+  }
+  .trash-icon {
+    margin-bottom: 50px;
+  }
+  .table-heading {
+    font-size: 10px;
+  }
+  .item-col {
+    margin: 8px;
+    position: relative;
+    left: 50px;
+  }
+  .square-info {
+    font-size: 18px;
+  }
+}
+@media (min-width: 998px) {
+  .dashboard-table {
+    padding: 5px;
+    font-size: 15px;
+    position: relative;
+    left: 100px;
+  }
+  .my-icons,
+  .edit-icon,
+  .trash-icon {
+    font-size: 20px;
+  }
+  .trash-icon {
+    margin-bottom: 25px;
+  }
+  .table-heading {
+    font-size: 20px;
+  }
+  .item-col {
+    margin: 40px;
+  }
+  .square-info {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1200px) {
+  .dashboard-table {
+    padding: 10px;
+    font-size: 20px;
+    position: relative;
+    left: 38px;
+  }
+
+  .my-icons {
+    font-size: 60px;
+  }
+  .edit-icon,
+  .trash-icon {
+    font-size: 30px;
+  }
+  .trash-icon {
+    margin-bottom: 50px;
+  }
+  .table-heading {
+    font-size: 30px;
+  }
+  .item-col {
+    margin: 40px;
+  }
+  .square-info {
+    font-size: 30px;
+  }
+}

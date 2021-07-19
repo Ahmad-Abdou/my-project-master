@@ -1,199 +1,217 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Shadows+Into+Light&display=swap");
-
-@media only screen and (max-width: 600px) {
-  .search {
-    width: 30%;
-    padding: 1px;
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .search {
-    /* width: 50%;
-    padding: 3px;
-    left: 40%; */
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .search {
-    width: 20%;
-    padding: 6px;
-    left: 20%;
-  }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .search {
-    width: 40%;
-    padding: 7px;
-    left: 40%;
-  }
-}
-@media only screen and (min-width: 1100px) {
-  .search {
-    width: 60%;
-    padding: 8px;
-    left: 60%;
-  }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1583px) {
-  .search {
-    width: 80%;
-    padding: 9px;
-    left: 80%;
-  }
-}
-@media only screen and (min-width: 1883px) {
-  .search {
-    width: 80%;
-    padding: 9px;
-    left: 80%;
-  }
-}
-
-.nav {
-  font-size: 25px;
-  display: inline-block;
-  position: sticky;
-  top: 10px;
-  width: 97%;
-  left: 30px;
+.counter,
+.wishCounter {
+  font-size: 10px;
+  text-align: center;
+  color: gold;
+  border: 1px solid gold;
+  border-radius: 50px;
   z-index: 1;
 }
-
-ul {
-  background-color: rgba(0, 0, 0, 0.779);
-  margin-right: 10px;
-  margin-left: 10px;
-  border: 2px solid rgba(1, 48, 70, 0.779);
-  border-radius: 15px;
-  padding: 24px 50px;
-}
-li {
-  display: inline-block;
-  padding: 0px 120px;
-}
-.search {
-  position: relative;
-  left: 100%;
-  border: 2px solid rgba(104, 100, 100, 0.779);
-  border-radius: 10px;
-  transition-duration: 1s;
-  font-size: 20px;
-  max-width: 100%;
-  margin-left: 60px;
-}
-
-.search:hover {
-  transform: scale(1.2);
-}
-.search:focus {
-  outline: none;
-}
-a {
-  color: cornsilk;
-  text-decoration: none;
-  padding: 10px;
-  transition-duration: 1s;
-}
-a:hover {
-  color: gold;
-}
-
-.cart {
-  position: absolute;
-  right: -50px;
-  color: white;
-  top: 5px;
-  transition-duration: 1s;
-}
-.cart:hover {
-  transform: scale(1.2);
-  color: gold;
-}
+.wish-icon,
 .cart-icon {
-  cursor: pointer;
-  font-size: 40px;
-  margin-bottom: -75px;
+  color: rgb(250, 75, 75);
 }
-.page-title {
-  position: absolute;
-  bottom: 20px;
-  font-family: "Shadows Into Light", cursive;
-  font-size: 60px;
-  color: wheat;
+.mynav {
+  background-color: rgba(29, 19, 19, 0.514);
 }
-.page-icon {
-  font-size: 70px;
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  color: wheat;
-  animation: rotating 3s linear infinite;
-}
-@keyframes rotating {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-.cart-text {
-  position: absolute;
-  right: 140px;
-  top: 30px;
-}
-.wish-icon {
-  position: absolute;
-  right: 160px;
-  top: 70px;
-  color: rgb(247, 86, 37);
-  font-size: 30px;
-  width: 36px;
-  transition-duration: 1000ms;
-}
-.wish-icon :hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-.counter {
+.link {
+  text-decoration: none;
   color: white;
-  background-color: tomato;
-  border: 2px solid tomato;
-  border-radius: 20px;
-  padding: 0;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  align-content: center;
-  font-size: 15px;
-  position: absolute;
-  right: 95px;
-  bottom: 30px;
-  cursor: pointer;
 }
-.wish-counter {
-  color: rgb(0, 0, 0);
-  background-color: rgb(244, 248, 11);
-  border-radius: 20px;
-  padding: 0;
-  width: 12px;
-  height: 12px;
-  text-align: center;
-  align-content: center;
-  font-size: 9px;
-  position: absolute;
-  right: 171px;
-  bottom: 32px;
-  cursor: pointer;
+
+@media (min-width: 400px) {
+  .mynav {
+    font-size: 10px;
+  }
+  .link {
+    display: block;
+    padding: 0;
+  }
+  .search {
+    position: absolute;
+    top: 70%;
+    right: 2%;
+    width: 100% !important;
+  }
+  .search-btn {
+    position: absolute;
+    top: 70%;
+    right: 0%;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+  }
+  .search-text {
+    font-size: 15px;
+  }
+  .wish-icon {
+    position: absolute;
+    left: 95%;
+    top: 23px;
+    font-size: 15px;
+  }
+  .cart-icon {
+    position: absolute;
+    left: 90%;
+    top: 22px;
+    font-size: 15px;
+  }
+  .counter {
+    position: absolute;
+    left: 90%;
+    top: 22px;
+    z-index: 1;
+  }
+  .wishCounter {
+    position: absolute;
+    left: 97%;
+    top: 22px;
+    z-index: 1;
+  }
 }
-.wish-counter:hover {
-  transform: scale(1.1);
+@media (min-width: 500px) {
+  .mynav {
+    font-size: 15px;
+  }
+  .link {
+    padding: 0;
+  }
+  .search {
+    position: absolute;
+    top: 10%;
+    right: 13%;
+    width: 120px !important;
+  }
+  .search-btn {
+    position: absolute;
+    top: 10%;
+    right: 8%;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+  }
+  .search-text {
+    font-size: 10px;
+  }
+  .wish-icon {
+    left: 96%;
+    top: 20px;
+    font-size: 15px;
+  }
+  .cart-icon {
+    left: 93%;
+    top: 20px;
+    font-size: 15px;
+    z-index: 1;
+  }
+}
+@media (min-width: 900px) {
+  .mynav {
+    font-size: 15px;
+  }
+  .link {
+    padding: 0 2rem;
+  }
+  .search {
+    position: absolute;
+    top: 10%;
+    right: 13%;
+    width: 140px !important;
+  }
+  .search-btn {
+    position: absolute;
+    top: 10%;
+    right: 8%;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+  }
+  .search-text {
+    font-size: 10px;
+  }
+  .wish-icon {
+    left: 96%;
+    top: 20px;
+    font-size: 15px;
+  }
+  .cart-icon {
+    left: 93%;
+    top: 20px;
+    font-size: 15px;
+    z-index: 1;
+  }
+}
+@media (min-width: 1100px) {
+  .mynav {
+    width: 100%;
+    font-size: 20px;
+  }
+  .link {
+    padding: 0 3.5rem;
+  }
+  .search {
+    position: absolute;
+    top: 18%;
+    right: 13%;
+    width: 220px !important;
+  }
+  .search-btn {
+    position: absolute;
+    top: 18%;
+    right: 8%;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+  }
+  .search-text {
+    font-size: 18px;
+  }
+  .wish-icon {
+    left: 96%;
+    top: 20px;
+    font-size: 25px;
+  }
+  .cart-icon {
+    left: 93%;
+    top: 20px;
+    font-size: 25px;
+    z-index: 1;
+  }
+}
+@media (min-width: 1600px) {
+  .mynav {
+    width: 100%;
+    font-size: 25px;
+  }
+  .link {
+    padding: 0 5rem;
+  }
+  .search {
+    position: absolute;
+    top: 10%;
+    right: 13%;
+    width: 290px !important;
+  }
+  .search-btn {
+    position: absolute;
+    top: 10%;
+    right: 8%;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+  }
+  .search-text {
+    font-size: 18px;
+  }
+  .wish-icon {
+    left: 96%;
+    top: 20px;
+    font-size: 25px;
+  }
+  .cart-icon {
+    left: 93%;
+    top: 20px;
+    font-size: 25px;
+    z-index: 1;
+  }
 }

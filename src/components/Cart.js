@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import Navbar from "./Navbar";
 import "../styling/cart.css";
 import { AppContext } from "../context/CartContext";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { MdVerifiedUser } from "react-icons/md";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Table } from "react-bootstrap";
+import Sidebar from "./Sidebar";
 function Cart() {
   const { myArray, setMyArray } = useContext(AppContext);
   const [show, isShowing] = useState(false);
@@ -29,104 +30,115 @@ function Cart() {
     }
   };
 
-  const getPrice = myArray.reduce((previous, current) => {
+  const getprice = myArray.reduce((previous, current) => {
     let singleItem = current.price * current.quantity;
     let sum = singleItem + previous;
     return sum;
   }, 0);
 
   return (
-    <article className="container-cart">
-      <Navbar></Navbar>
-      <div className="My-Message-container">
-        {show ? (
-          <div className="My-Message-purchase">
-            <MdVerifiedUser className="true-icon"></MdVerifiedUser>
-            <h1>Thanks for purchasing </h1>
-            <h4>Order : {newId}</h4>
-          </div>
-        ) : (
-          <div className="table-container">
-            {myArray.length > 0 ? (
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Count</th>
-                  </tr>
-                </thead>
+    <>
+      <Sidebar />
+      <article>
+        <div>
+          {show ? (
+            <div className="empty-purchase">
+              <MdVerifiedUser></MdVerifiedUser>
+              <h1>Thanks for purchasing </h1>
+              <h4>Order : {newId}</h4>
+            </div>
+          ) : (
+            <div>
+              {myArray.length > 0 ? (
+                <Table
+                  className="table w-50 justify-content-center"
+                  striped
+                  bordered
+                  hover
+                  variant="secondary"
+                >
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Count</th>
+                    </tr>
+                  </thead>
 
-                {myArray.map((item, index) => {
-                  const { id, title, price, image, quantity } = item;
+                  {myArray.map((item, index) => {
+                    const { id, title, price, image, quantity } = item;
 
-                  return (
-                    <tbody key={id}>
-                      <tr>
-                        <td>
-                          <h6 className="cart-title">{title}</h6>
-                          <img
-                            src={`data:image/jpeg;base64,${image}`}
-                            alt={title}
-                          />
-                        </td>
-                        <td className="price">
-                          {price}$ * {quantity}
-                          <h4>
-                            Sub-Total :{" "}
-                            {Math.round(price * quantity * 100) / 100} $
-                          </h4>
-                        </td>
-                        <td>
-                          <FaPlusCircle
-                            className="arrow-up"
-                            onClick={() => increase(index)}
-                          ></FaPlusCircle>
-                          <h4 className="cart-counter">{quantity}</h4>
-                          <FaMinusCircle
-                            className="arrow-down"
-                            onClick={() => decrease(index, id)}
-                          ></FaMinusCircle>
-                        </td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-                <tbody>
-                  <tr>
-                    <td className="cart-total">
-                      <p className="total">Total</p>
-                    </td>
-                  </tr>
+                    return (
+                      <tbody key={id}>
+                        <tr>
+                          <td>
+                            <h6 className="title">{title}</h6>
+                            <img
+                              src={`data:image/jpeg;base64,${image}`}
+                              alt={title}
+                            />
+                          </td>
+                          <td>
+                            {price}$ * {quantity}
+                            <h4>
+                              Sub-Total :
+                              {Math.round(price * quantity * 100) / 100} $
+                            </h4>
+                          </td>
+                          <td>
+                            <FaPlusCircle
+                              className="arrow"
+                              onClick={() => increase(index)}
+                            ></FaPlusCircle>
+                            <h4 className="quantity">{quantity}</h4>
+                            <FaMinusCircle
+                              className="arrow"
+                              onClick={() => decrease(index, id)}
+                            ></FaMinusCircle>
+                          </td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p className="sum">Total</p>
+                      </td>
+                      <td></td>
+                      <td>
+                        <p className="sum">
+                          {Math.round(getprice * 100) / 100}$
+                        </p>
+                      </td>
+                    </tr>
 
-                  <tr>
-                    <td>
-                      {/* <p className="sum">{Math.round(getPrice * 100) / 100}$</p> */}
-                    </td>
-                    <td>
+                    <tr>
+                      <td></td>
+                      <td></td>
                       <button
-                        className="proceed"
+                        className="proceed "
                         onClick={() => isShowing(!show)}
                       >
                         Proceed
                       </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            ) : (
-              <div>
-                {empty && (
-                  <div className="empty-cart">
-                    <h1>Your Cart Is empty!</h1>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    </article>
+                    </tr>
+                  </tbody>
+                </Table>
+              ) : (
+                <div>
+                  {empty && (
+                    <div className="empty-purchase">
+                      <h1>Your Cart Is empty!</h1>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </article>
+    </>
   );
 }
 

@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../styling/Home.css";
-import Navbar from "./Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { AppContext } from "../context/CartContext";
 import axios from "axios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
+import Sidebar from "./Sidebar";
 function Home() {
   const { add, addingItem } = useContext(AppContext);
   const [input, setInput] = useState("");
@@ -15,15 +15,10 @@ function Home() {
 
   const fetchUserProfile = () => {
     isLoading(true);
-    axios
-      .get(
-        "http://movieshop-env.eba-y5zzn5ds.us-east-2.elasticbeanstalk.com/api/movie"
-      )
-      .then((res) => {
-        console.log(res);
-        setData(res.data);
-        isLoading(false);
-      });
+    axios.get("http://localhost:8080/api/movie").then((res) => {
+      setData(res.data);
+      isLoading(false);
+    });
   };
 
   useEffect(() => {
@@ -37,11 +32,12 @@ function Home() {
   }
   return (
     <div>
-      <Navbar
+      <Sidebar
         setInput={setInput}
         counter={counter}
         wishCounter={wishCounter}
-      ></Navbar>
+      />
+
       <div className="container">
         {data
           .filter((item) => {
@@ -52,7 +48,7 @@ function Home() {
             }
           })
           .map((movie) => {
-            const { id, title, price, description, image, quantity } = movie;
+            const { id, title, price, image } = movie;
 
             return (
               <article key={id} className="movies-info">

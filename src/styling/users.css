@@ -1,0 +1,19 @@
+.user_container {
+  align-items: center;
+  width: 50% !important;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 5rem;
+  min-width: 350px;
+}
+.user_info {
+  background-color: rgb(92, 85, 85);
+  color: rgb(255, 255, 255);
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid white;
+  min-width: 250px;
+}
+.user-col {
+  margin-bottom: 5rem;
+}

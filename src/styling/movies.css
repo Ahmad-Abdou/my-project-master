@@ -1,0 +1,76 @@
+.adding-movie {
+  width: 50% !important;
+  padding: 3rem;
+  border-radius: 10px;
+  background-color: rgb(88, 88, 88);
+  display: inline-block;
+  position: fixed;
+  top: 20%;
+}
+.field {
+  padding: 1.5rem;
+  margin: 1rem;
+}
+.field-file {
+  padding: 2rem;
+  color: white;
+}
+.user_container {
+  border: 1px solid rgb(88, 88, 88);
+  border-radius: 10px;
+  background-color: rgb(88, 88, 88);
+  color: white;
+  margin-top: 20px;
+  text-align: center;
+  padding: 1rem;
+}
+.user_info,
+.user_counter {
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem;
+  color: green;
+  border-radius: 10px;
+}
+.my-alert {
+  width: 47%;
+  position: fixed;
+  top: 5%;
+  left: 28%;
+  animation: alert 5s;
+}
+@keyframes alert {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 500px) {
+  .adding-movie {
+    left: 40%;
+  }
+}
+@media (min-width: 998px) {
+  .adding-movie {
+    left: 35%;
+  }
+}
+@media (min-width: 1200px) {
+  .adding-movie {
+    left: 30%;
+  }
+}
