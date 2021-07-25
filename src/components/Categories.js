@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import "../styling/category.css";
-
+import NavbarCom from "./NavbarCom";
 function Categories() {
   const [movieInfo, setMovieInfo] = useState([]);
   const allCategories = [
@@ -34,6 +34,7 @@ function Categories() {
   };
   return (
     <>
+      <NavbarCom></NavbarCom>
       <Sidebar />
       <Container className="category_container">
         <Row>

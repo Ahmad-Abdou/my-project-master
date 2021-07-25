@@ -4,8 +4,9 @@ import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
 import "../styling/users.css";
 import Sidebar from "./Sidebar";
-
+import NavbarCom from "./NavbarCom";
 function Users() {
+  // eslint-disable-next-line
   const [userCounter, setUserCounter] = useState(0);
   const [userInfo, setUserInfo] = useState([]);
 
@@ -21,6 +22,7 @@ function Users() {
   }, []);
   return (
     <>
+      <NavbarCom></NavbarCom>
       <Sidebar />
       <Container className="user_container">
         <Row>

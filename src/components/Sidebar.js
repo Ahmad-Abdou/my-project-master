@@ -14,6 +14,7 @@ import {
   BiListUl,
   BiCart,
   BiCaretRightSquare,
+  BiBorderOuter,
 } from "react-icons/bi";
 
 const Sidebar = () => {
@@ -39,7 +40,7 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <NavLink exact to="/home" activeClassName="activeClicked">
               <CDBSidebarMenuItem>
                 <BiCaretRightSquare className="mr-4 fa-2x"></BiCaretRightSquare>
                 Movie shop
@@ -52,7 +53,12 @@ const Sidebar = () => {
             </NavLink>
             <NavLink exact to="/cart" activeClassName="activeClicked">
               <CDBSidebarMenuItem>
-                <BiCart className="mr-4 fa-2x"></BiCart>Orders
+                <BiCart className="mr-4 fa-2x"></BiCart>Cart
+              </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/order" activeClassName="activeClicked">
+              <CDBSidebarMenuItem>
+                <BiBorderOuter className="mr-4 fa-2x"></BiBorderOuter>Orders
               </CDBSidebarMenuItem>
             </NavLink>
 
@@ -72,17 +78,12 @@ const Sidebar = () => {
                 Categories
               </CDBSidebarMenuItem>
             </NavLink>
-
-            <NavLink
-              exact
-              to="/hero404"
-              target="_blank"
-              activeClassName="activeClicked"
-            >
-              <CDBSidebarMenuItem icon="exclamation-circle">
-                404 page
+            {/* <NavLink exact to="/signin" activeClassName="activeClicked">
+              <CDBSidebarMenuItem>
+                <BiListUl className="mr-4 fa-2x"></BiListUl>
+                Sign in
               </CDBSidebarMenuItem>
-            </NavLink>
+            </NavLink> */}
           </CDBSidebarMenu>
         </CDBSidebarContent>
       </CDBSidebar>

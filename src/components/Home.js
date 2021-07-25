@@ -5,14 +5,16 @@ import { AppContext } from "../context/CartContext";
 import axios from "axios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Sidebar from "./Sidebar";
+import NavbarCom from "./NavbarCom";
+import { Alert } from "react-bootstrap";
 function Home() {
+  // eslint-disable-next-line
   const { add, addingItem } = useContext(AppContext);
   const [input, setInput] = useState("");
   const [counter, setCounter] = useState(0);
   const [wishCounter, setWishCounter] = useState(0);
   const [data, setData] = useState([]);
   const [loading, isLoading] = useState(true);
-
   const fetchUserProfile = () => {
     isLoading(true);
     axios.get("http://localhost:8080/api/movie").then((res) => {
@@ -30,8 +32,10 @@ function Home() {
       <AiOutlineLoading3Quarters className="loading-icon"></AiOutlineLoading3Quarters>
     );
   }
+
   return (
     <div>
+      <NavbarCom></NavbarCom>
       <Sidebar
         setInput={setInput}
         counter={counter}
@@ -40,6 +44,7 @@ function Home() {
 
       <div className="container">
         {data
+          // eslint-disable-next-line
           .filter((item) => {
             if (input === "") {
               return item;

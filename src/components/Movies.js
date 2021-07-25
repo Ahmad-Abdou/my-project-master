@@ -4,7 +4,7 @@ import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import axios from "axios";
 import "../styling/movies.css";
 import Sidebar from "./Sidebar";
-
+import NavbarCom from "./NavbarCom";
 function Movies() {
   const [movieData, setMovieData] = useState({
     title: "",
@@ -39,6 +39,7 @@ function Movies() {
 
       .then((res) => {
         setIsSubmited(true);
+
         setTimeout(() => {
           setIsSubmited(false);
         }, 5000);
@@ -49,6 +50,7 @@ function Movies() {
   };
   return (
     <>
+      <NavbarCom></NavbarCom>
       <Sidebar />
       {isSubmited && (
         <Alert className="my-alert" variant="success">

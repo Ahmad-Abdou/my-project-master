@@ -15,6 +15,7 @@ img {
   border-radius: 10px;
   background-color: gold;
   width: 100%;
+  background-size: cover;
 }
 .sum {
   color: rgb(243, 52, 52);

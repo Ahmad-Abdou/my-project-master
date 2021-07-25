@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../styling/cart.css";
 import { AppContext } from "../context/CartContext";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
@@ -6,13 +6,25 @@ import { MdVerifiedUser } from "react-icons/md";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Table } from "react-bootstrap";
 import Sidebar from "./Sidebar";
+import NavbarCom from "./NavbarCom";
+import axios from "axios";
+
 function Cart() {
   const { myArray, setMyArray } = useContext(AppContext);
   const [show, isShowing] = useState(false);
+  // eslint-disable-next-line
   const [empty, isEmpty] = useState(true);
+  const [mySignedInUser, setMySignedInUser] = useState("");
+  const [mySignedInAlert, setMySignedInAlert] = useState(true);
+  const [resultArray, setResultArray] = useState({
+    title: "",
+    price: "",
+    description: "",
+    quantity: "",
+  });
+  const [myOrderNumber, setMyOrderNumber] = useState([]);
 
-  let newId = Math.floor(Math.random() * 1000000000);
-
+  // console.log(myOrderNumber);
   const increase = (index) => {
     const newItems = [...myArray];
     newItems[index].quantity++;
@@ -29,15 +41,56 @@ function Cart() {
       setMyArray(newItems);
     }
   };
-
   const getprice = myArray.reduce((previous, current) => {
     let singleItem = current.price * current.quantity;
     let sum = singleItem + previous;
     return sum;
   }, 0);
 
+  const signedInUser = () => {
+    axios
+      .get(`http://localhost:8080/api/v1/signin`)
+      .then((res) => {
+        setMySignedInUser(res.data);
+        setMySignedInAlert(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const buyItems = () => {
+    axios
+      .post(`http://localhost:8080/api/v1/buy`, resultArray)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/v1/order/ordernumber`)
+      .then((res) => {
+        setMyOrderNumber(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    myArray.map((movie) => {
+      return setResultArray({
+        title: movie.title,
+        price: movie.price,
+        description: movie.description,
+        quantity: movie.quantity,
+      });
+    });
+    signedInUser();
+    // eslint-disable-next-line
+  }, []);
   return (
     <>
+      <NavbarCom setMySignedInUser={setMySignedInUser}></NavbarCom>
       <Sidebar />
       <article>
         <div>
@@ -45,7 +98,7 @@ function Cart() {
             <div className="empty-purchase">
               <MdVerifiedUser></MdVerifiedUser>
               <h1>Thanks for purchasing </h1>
-              <h4>Order : {newId}</h4>
+              <h4>Order : {myOrderNumber.pop()}</h4>
             </div>
           ) : (
             <div>
@@ -112,16 +165,31 @@ function Cart() {
                         </p>
                       </td>
                     </tr>
-
                     <tr>
                       <td></td>
                       <td></td>
-                      <button
-                        className="proceed "
-                        onClick={() => isShowing(!show)}
-                      >
-                        Proceed
-                      </button>
+                      <td>
+                        {mySignedInUser === "" ? (
+                          <button
+                            className="proceed "
+                            onClick={() => {
+                              alert("you need to sign in to proceed");
+                            }}
+                          >
+                            Proceed
+                          </button>
+                        ) : (
+                          <button
+                            className="proceed "
+                            onClick={() => {
+                              buyItems();
+                              isShowing(true);
+                            }}
+                          >
+                            Proceed
+                          </button>
+                        )}
+                      </td>
                     </tr>
                   </tbody>
                 </Table>
