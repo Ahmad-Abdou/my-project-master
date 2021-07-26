@@ -25,6 +25,7 @@ function Orders() {
     <>
       <NavbarCom></NavbarCom>
       <Sidebar />
+
       <Container className="user_container">
         <Row>
           <Col>
@@ -68,6 +69,7 @@ function Orders() {
                       <h5 className="user_info">Price : {price}$</h5>
                       <h5 className="user_info">Description : {description}</h5>
                       <h5 className="user_info">Quantity : {quantity}</h5>
+                      <h5 className="user_info "> </h5>
                     </div>
                   </Col>
                 </div>

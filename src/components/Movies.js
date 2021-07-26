@@ -54,7 +54,7 @@ function Movies() {
       <Sidebar />
       {isSubmited && (
         <Alert className="my-alert" variant="success">
-          Movie Edited Successfully
+          Movie Added Successfully
         </Alert>
       )}
 

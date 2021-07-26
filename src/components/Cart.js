@@ -15,6 +15,7 @@ function Cart() {
   // eslint-disable-next-line
   const [empty, isEmpty] = useState(true);
   const [mySignedInUser, setMySignedInUser] = useState("");
+  // eslint-disable-next-line
   const [mySignedInAlert, setMySignedInAlert] = useState(true);
   const [resultArray, setResultArray] = useState({
     title: "",
@@ -23,6 +24,7 @@ function Cart() {
     quantity: "",
   });
   const [myOrderNumber, setMyOrderNumber] = useState([]);
+  const [myOrderNumberLength, setMyOrderNumberLength] = useState(0);
 
   // console.log(myOrderNumber);
   const increase = (index) => {
@@ -73,6 +75,7 @@ function Cart() {
       .get(`http://localhost:8080/api/v1/order/ordernumber`)
       .then((res) => {
         setMyOrderNumber(res.data);
+        setMyOrderNumberLength(myOrderNumber.length);
       })
       .catch((err) => {
         console.log(err);
@@ -91,7 +94,7 @@ function Cart() {
   return (
     <>
       <NavbarCom setMySignedInUser={setMySignedInUser}></NavbarCom>
-      <Sidebar />
+      <Sidebar myOrderNumberLength={myOrderNumberLength} />
       <article>
         <div>
           {show ? (

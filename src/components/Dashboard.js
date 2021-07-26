@@ -21,11 +21,11 @@ import {
   BiTrash,
   BiPencil,
 } from "react-icons/bi";
+import NavbarCom from "./NavbarCom";
 function Dashboard() {
   const [movieInfo, setMovieInfo] = useState([]);
   const [userCounter, setUserCounter] = useState(0);
   const [moviesCounter, setMoviesCounter] = useState(0);
-  const [categoriesCounter, setCategoriesCounter] = useState([]);
   const [movieData, setMovieData] = useState({
     id: "",
     title: "",
@@ -38,6 +38,7 @@ function Dashboard() {
   const [isSubmited, setIsSubmited] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
   const [loading, isLoading] = useState(true);
+  const [myOrderNumber, setMyOrderNumber] = useState([]);
 
   const changeHandler = (e) => {
     setMovieData({ ...movieData, [e.target.name]: e.target.value });
@@ -60,11 +61,20 @@ function Dashboard() {
         console.log(err);
       });
   };
+  const orderNumber = () => {
+    axios
+      .get(`http://localhost:8080/api/v1/order/ordernumber`)
+      .then((res) => {
+        setMyOrderNumber(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const fetchUserProfile = () => {
     axios.get("http://localhost:8080/api/v1").then((res) => {
       setUserCounter(res.data.length);
-      setCategoriesCounter(myCategories.length);
     });
   };
   const DeleteMovie = (id) => {
@@ -108,9 +118,9 @@ function Dashboard() {
   useEffect(() => {
     fetchUserProfile();
     fetchMovies();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    orderNumber();
     return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -121,6 +131,7 @@ function Dashboard() {
   return (
     <>
       <Sidebar />
+      <NavbarCom></NavbarCom>
       <Container className="dashboard-container">
         <Row className="item-row">
           <Col></Col>
@@ -143,13 +154,13 @@ function Dashboard() {
             <h3 className="item-style">
               <BiCart className="my-icons"></BiCart>
             </h3>
-            {/* <h3>5</h3> */}
+            <h3>{myOrderNumber.length}</h3>
           </Col>
           <Col className="item-col">
             <h3 className="item-style">
               <BiListUl className="my-icons"></BiListUl>
             </h3>
-            <h3 className="square-info">{categoriesCounter}</h3>
+            <h3 className="square-info">{myCategories.length}</h3>
           </Col>
         </Row>
       </Container>
@@ -172,6 +183,7 @@ function Dashboard() {
               <th className="table-heading">Title</th>
               <th className="table-heading">Price</th>
               <th className="table-heading">Category</th>
+              <th className="table-heading">Order Number</th>
               <th></th>
             </tr>
           </thead>
@@ -187,6 +199,7 @@ function Dashboard() {
                   <td>{title}</td>
                   <td>{price}</td>
                   <td>{description}</td>
+                  <td>{myOrderNumber}</td>
                   <td>
                     <BiTrash
                       onClick={() => DeleteMovie(id)}

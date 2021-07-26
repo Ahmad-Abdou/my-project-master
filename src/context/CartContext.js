@@ -10,14 +10,13 @@ const AppProvider = ({ children }) => {
   const [myArray, setMyArray] = useState([]);
   const [data, setData] = useState([]);
   const [loading, isLoading] = useState(true);
-  const [movieOrder, setMovieOrder] = useState([]);
 
   useEffect(() => {
     isLoading(true);
     axios.get("http://localhost:8080/api/movie").then((res) => {
       setData(res.data);
-      isLoading(false);
     });
+    isLoading(false);
   }, []);
   if (loading) {
     return (

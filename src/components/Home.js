@@ -6,7 +6,6 @@ import axios from "axios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Sidebar from "./Sidebar";
 import NavbarCom from "./NavbarCom";
-import { Alert } from "react-bootstrap";
 function Home() {
   // eslint-disable-next-line
   const { add, addingItem } = useContext(AppContext);

@@ -4,10 +4,11 @@
   text-align: center;
   padding: 10px 20px;
   transition-duration: 1s;
-  margin: 10px;
-  border: 2px solid white;
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.747);
+  margin-top: 70px;
+  margin-right: 20px;
+
+  border-radius: 30px;
+  background-color: rgba(51, 67, 216, 0.747);
 }
 .movies-info:hover {
   transform: scale(1.1);
@@ -24,16 +25,16 @@
 }
 
 .price {
-  color: rgb(212, 60, 60);
+  color: rgb(255, 0, 0);
   font-size: 20px;
 }
 .wish-btn {
   border: 2px solid rgb(110, 112, 0);
   padding: 10px;
   border-radius: 10px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 20px;
-  background-color: gold;
+  background-color: rgb(240, 208, 27);
   font-family: sans-serif;
   cursor: pointer;
 }
