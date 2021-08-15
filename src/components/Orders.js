@@ -28,7 +28,7 @@ function Orders() {
         <thead>
           <tr>
             <th className="table-heading">Order Number</th>
-            {/* <th className="table-heading">Email</th> */}
+            <th className="table-heading">Email</th>
             <th className="table-heading">Movie name</th>
             <th className="table-heading">Price</th>
             <th className="table-heading">Quntity</th>
