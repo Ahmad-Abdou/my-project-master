@@ -47,3 +47,55 @@
     opacity: 1;
   }
 }
+.register-container {
+  background-color: rgb(141, 140, 140);
+  width: 60% !important;
+  margin: 0 auto;
+  color: white;
+  text-align: left;
+  align-items: left;
+  height: 30vh;
+  border-radius: 10px;
+  height: 40vh;
+  background-image: url("./images/register.jpeg");
+  background-repeat: no-repeat;
+  background-size: 542px;
+  background-position-x: right;
+}
+.register-form {
+  margin-top: 100px;
+  text-align: left;
+  width: 50%;
+  padding: 50px;
+}
+.register {
+  width: 100%;
+  font-size: 20px;
+}
+.my-alert-register {
+  width: 50%;
+  position: fixed;
+  top: 8%;
+  left: 25%;
+  animation: alert-contact 6s;
+}
+@keyframes alert-contact {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

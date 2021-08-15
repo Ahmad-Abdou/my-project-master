@@ -11,7 +11,7 @@ function Users() {
   const [userInfo, setUserInfo] = useState([]);
 
   const fetchUserProfile = () => {
-    axios.get("http://localhost:8080/api/v1").then((res) => {
+    axios.get("http://localhost:8080/api/v1/users").then((res) => {
       setUserCounter(res.data.length);
       setUserInfo(res.data);
     });

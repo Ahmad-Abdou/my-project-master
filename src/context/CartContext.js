@@ -17,6 +17,7 @@ const AppProvider = ({ children }) => {
       setData(res.data);
     });
     isLoading(false);
+    // }, []);
   }, []);
   if (loading) {
     return (
@@ -26,6 +27,7 @@ const AppProvider = ({ children }) => {
 
   const add = (id) => {
     const newItem = data.find((item) => item.id === id);
+
     setCounter((newItem.quantity += 1));
     setAddingItem([...addingItem, newItem]);
     setMyArray([...new Set([...addingItem, newItem])]);

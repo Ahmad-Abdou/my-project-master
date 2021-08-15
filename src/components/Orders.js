@@ -1,83 +1,142 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Container, Col } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import NavbarCom from "./NavbarCom";
+import "../styling/Orders.css";
 function Orders() {
   const [movieOrder, setMovieOrder] = useState([]);
 
-  const fetchOrders = () => {
+  useEffect(() => {
     axios
       .get("http://localhost:8080/api/v1/buy/orders")
       .then((res) => {
         setMovieOrder(res.data);
+        // console.log(...res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-  useEffect(() => {
-    fetchOrders();
   }, []);
 
   return (
     <>
-      <NavbarCom></NavbarCom>
       <Sidebar />
+      <NavbarCom></NavbarCom>
+      <Table className="dashboard-table-orders" striped bordered hover>
+        <thead>
+          <tr>
+            <th className="table-heading">Order Number</th>
+            {/* <th className="table-heading">Email</th> */}
+            <th className="table-heading">Movie name</th>
+            <th className="table-heading">Price</th>
+            <th className="table-heading">Quntity</th>
+            <th className="table-heading">Payment amount</th>
+            <th className="table-heading">Payment status</th>
+            <th className="table-heading">Order date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="table-row">
+            <td>
+              {movieOrder.map((myMovieOrder) => {
+                const { id, order } = myMovieOrder;
+                const { orderNumber } = order;
+                return (
+                  <div key={id}>
+                    <p className="table-order-number">{orderNumber}</p>
+                  </div>
+                );
+              })}
+            </td>
+            <td>
+              {movieOrder.map((myMovieOrder) => {
+                const { id, order } = myMovieOrder;
+                const {
+                  user: { email },
+                } = order;
+                return (
+                  <div key={id}>
+                    <h5 className="table-body">{email}</h5>
+                  </div>
+                );
+              })}
+            </td>
+            <td>
+              {movieOrder.map((myMovieOrder) => {
+                const { id, movie } = myMovieOrder;
+                const { title } = movie;
+                return (
+                  <div key={id}>
+                    {" "}
+                    <h5 className="table-movie-name"> {title}</h5>
+                  </div>
+                );
+              })}
+            </td>
+            <td>
+              {movieOrder.map((myMovieOrder) => {
+                const { id, movie } = myMovieOrder;
+                const { price } = movie;
+                return (
+                  <div key={id}>
+                    <h5 className="table-body"> {price}$</h5>
+                  </div>
+                );
+              })}
+            </td>
+            <td>
+              {movieOrder.map((myMovieOrder) => {
+                const { id, movie } = myMovieOrder;
 
-      <Container className="user_container">
-        <Row>
-          <Col>
-            <h2 className="user-col">Orders</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            {movieOrder.map((myMovieOrder) => {
-              const { id, order, movie } = myMovieOrder;
-              const {
-                myid,
-                orderNumber,
-                paymentAmount,
-                paymentStatus,
-                orderDate,
-                user: { email },
-              } = order;
-              const { movieId, title, price, description, quantity } = movie;
+                const { quantity } = movie;
+                return (
+                  <div key={id}>
+                    <h5 className="table-body"> {quantity}</h5>
+                  </div>
+                );
+              })}
+            </td>
+            <td>
+              {movieOrder.map((myMovieOrder) => {
+                const { id, order } = myMovieOrder;
+                const { paymentAmount } = order;
+                return (
+                  <div key={id}>
+                    <h5 className="table-body">{paymentAmount}$</h5>
+                  </div>
+                );
+              })}
+            </td>
 
-              return (
-                <div key={id}>
-                  <Col>
-                    <div key={myid}>
-                      <h5 className="user_info">
-                        Order Number : {orderNumber}
-                      </h5>
-                      <h5 className="user_info">
-                        Payment amount: {paymentAmount}$
-                      </h5>
-                      <h5 className="user_info">
-                        Payment status : {paymentStatus}
-                      </h5>
-                      <h5 className="user_info">Order date : {orderDate}</h5>
-                      <h5 className="user_info">Email: {email}</h5>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div key={movieId}>
-                      <h5 className="user_info">Movie Name : {title}</h5>
-                      <h5 className="user_info">Price : {price}$</h5>
-                      <h5 className="user_info">Description : {description}</h5>
-                      <h5 className="user_info">Quantity : {quantity}</h5>
-                      <h5 className="user_info "> </h5>
-                    </div>
-                  </Col>
-                </div>
-              );
-            })}
-          </Col>
-        </Row>
-      </Container>
+            <td>
+              {movieOrder.map((myMovieOrder) => {
+                const { id, order } = myMovieOrder;
+                const { paymentStatus } = order;
+
+                return (
+                  <div key={id}>
+                    <h5 className="payment-status">{paymentStatus}</h5>
+                  </div>
+                );
+              })}
+            </td>
+            <td className="table-heading-date">
+              {movieOrder.map((myMovieOrder) => {
+                const { id, order } = myMovieOrder;
+                const { orderDate } = order;
+
+                return (
+                  <div key={id}>
+                    <p className="table-heading-date"> {orderDate}</p>
+                  </div>
+                );
+              })}
+            </td>
+          </tr>
+        </tbody>
+      </Table>
     </>
   );
 }

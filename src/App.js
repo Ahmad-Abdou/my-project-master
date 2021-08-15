@@ -11,6 +11,9 @@ import Users from "./components/Users";
 import Categories from "./components/Categories";
 import Signin from "./components/Signin";
 import Orders from "./components/Orders";
+import ResetPassword from "./components/ResetPassword";
+import EmailValidation from "./components/EmailValidation";
+import MyProfile from "./components/MyProfile";
 function App() {
   return (
     <div className="App">
@@ -28,8 +31,14 @@ function App() {
           <Route path="/order">
             <Orders></Orders>
           </Route>
+          <Route path="/myprofile">
+            <MyProfile></MyProfile>
+          </Route>
           <Route path="/cart">
             <Cart></Cart>
+          </Route>
+          <Route path="/emailvalid">
+            <EmailValidation></EmailValidation>
           </Route>
           <Route path="/dashboard">
             <Dashboard></Dashboard>
@@ -39,6 +48,9 @@ function App() {
           </Route>
           <Route path="/users">
             <Users></Users>
+          </Route>
+          <Route path="/reset">
+            <ResetPassword></ResetPassword>
           </Route>
           <Route path="/categories">
             <Categories></Categories>

@@ -6,6 +6,7 @@ import axios from "axios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Sidebar from "./Sidebar";
 import NavbarCom from "./NavbarCom";
+import Robot from "./Robot";
 function Home() {
   // eslint-disable-next-line
   const { add, addingItem } = useContext(AppContext);
@@ -41,6 +42,7 @@ function Home() {
         wishCounter={wishCounter}
       />
 
+      <Robot></Robot>
       <div className="container">
         {data
           // eslint-disable-next-line

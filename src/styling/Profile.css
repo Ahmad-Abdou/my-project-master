@@ -1,0 +1,146 @@
+.profile-name {
+  position: fixed;
+  top: 13px;
+  left: 90%;
+  color: white;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+.profile-name:hover {
+  color: rgb(63, 124, 214);
+  cursor: pointer;
+}
+.edit-container {
+  width: 900px;
+  background-color: rgba(227, 228, 227, 0.418);
+  border-radius: 10px;
+  height: 70vh;
+  position: fixed;
+  left: 500px;
+}
+.profile-image {
+  width: 40px;
+  border-radius: 50px;
+  position: fixed;
+  top: 1%;
+  left: 87%;
+  z-index: 1;
+  height: 38px;
+}
+.profile-image {
+  cursor: pointer;
+}
+.main-image {
+  width: 360px;
+  position: fixed;
+  left: 30%;
+  top: 15%;
+  border: 1px solid gray;
+  height: 320px;
+}
+.profile-container {
+  width: 30%;
+  position: fixed;
+  left: 20%;
+  top: 10%;
+  padding: 50px;
+  font-size: 20px;
+  background-color: rgba(211, 211, 211, 0.445);
+  height: 35vh;
+  margin: 20px;
+}
+.profile-field {
+  color: lightcoral;
+  padding: 10px;
+  display: inline-block;
+  margin-left: 160px;
+}
+.profile-field-btn {
+  background-color: lightcoral;
+  border: none;
+  color: white;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+.side-image {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  border-radius: 100px;
+  width: 150px;
+  height: 130px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.profile-field-value {
+  padding: 10px;
+  display: inline-block;
+  margin-left: 20px;
+  text-transform: capitalize;
+}
+.edit-user-name {
+  position: fixed;
+  left: 50%;
+  top: 18%;
+  width: 350px;
+}
+.edit-last-name {
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  width: 350px;
+}
+.edit-mobile {
+  position: fixed;
+  left: 50%;
+  top: 33%;
+  width: 350px;
+}
+.field-file-profile {
+  position: fixed;
+  bottom: 42%;
+  left: 30%;
+  color: white;
+}
+.change-picture-btn {
+  background-color: rgb(245, 87, 87);
+  position: fixed;
+  bottom: 42%;
+  left: 42%;
+  border: 1px solid rgb(245, 87, 87);
+}
+.change-picture-btn:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(245, 87, 87);
+  border: 1px solid rgb(245, 87, 87);
+}
+.submit-user-info {
+  position: absolute;
+  left: 88%;
+  bottom: 20%;
+  font-size: 44px;
+  color: darkgreen;
+}
+.submit-user-info:hover {
+  cursor: pointer;
+}
+.submit-my-user {
+  padding: 10px;
+  position: fixed;
+  left: 40%;
+  top: 65%;
+  width: 300px;
+  border: none;
+  background-color: rgb(84, 113, 240);
+  color: white;
+  font-size: 25px;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+.submit-my-user:hover {
+  color: rgb(84, 113, 240);
+  background-color: white;
+  border: 1px solid rgb(84, 113, 240);
+}

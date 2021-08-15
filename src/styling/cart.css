@@ -47,4 +47,7 @@ th {
   border: 2px solid rgb(110, 109, 109);
   border-radius: 10px;
   font-size: 40px;
+  position: fixed;
+  left: 30%;
+  top: 20%;
 }

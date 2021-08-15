@@ -7,6 +7,9 @@
   border-radius: 50px;
   z-index: 1;
 }
+.navbar {
+  z-index: 0;
+}
 .wish-icon,
 .cart-icon {
   color: rgb(250, 75, 75);

@@ -166,6 +166,8 @@
   }
   .item-col {
     margin: 40px;
+    position: relative;
+    left: -5%;
   }
   .square-info {
     font-size: 30px;

@@ -8,15 +8,17 @@ import { Table } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import NavbarCom from "./NavbarCom";
 import axios from "axios";
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Robot from "./Robot";
 function Cart() {
   const { myArray, setMyArray } = useContext(AppContext);
   const [show, isShowing] = useState(false);
+  const [loading, isLoading] = useState(false);
   // eslint-disable-next-line
   const [empty, isEmpty] = useState(true);
   const [mySignedInUser, setMySignedInUser] = useState("");
   // eslint-disable-next-line
-  const [mySignedInAlert, setMySignedInAlert] = useState(true);
+  const [mySignedInAlert, setMySignedInAlert] = useState(false);
   const [resultArray, setResultArray] = useState({
     title: "",
     price: "",
@@ -24,9 +26,6 @@ function Cart() {
     quantity: "",
   });
   const [myOrderNumber, setMyOrderNumber] = useState([]);
-  const [myOrderNumberLength, setMyOrderNumberLength] = useState(0);
-
-  // console.log(myOrderNumber);
   const increase = (index) => {
     const newItems = [...myArray];
     newItems[index].quantity++;
@@ -62,24 +61,23 @@ function Cart() {
   };
 
   const buyItems = () => {
+    isLoading(false);
     axios
       .post(`http://localhost:8080/api/v1/buy`, resultArray)
-      .then((res) => {})
+
+      .then((res) => {
+        setTimeout(() => {
+          isShowing(true);
+          setMyOrderNumber(res.data.order.orderNumber);
+          isLoading(false);
+        }, 3000);
+      })
       .catch((err) => {
         console.log(err);
       });
   };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/v1/order/ordernumber`)
-      .then((res) => {
-        setMyOrderNumber(res.data);
-        setMyOrderNumberLength(myOrderNumber.length);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
     myArray.map((movie) => {
       return setResultArray({
         title: movie.title,
@@ -91,17 +89,22 @@ function Cart() {
     signedInUser();
     // eslint-disable-next-line
   }, []);
+
   return (
     <>
       <NavbarCom setMySignedInUser={setMySignedInUser}></NavbarCom>
-      <Sidebar myOrderNumberLength={myOrderNumberLength} />
+      <Sidebar />
+      <Robot></Robot>
       <article>
         <div>
+          {loading && (
+            <AiOutlineLoading3Quarters className="loading-icon"></AiOutlineLoading3Quarters>
+          )}
           {show ? (
             <div className="empty-purchase">
               <MdVerifiedUser></MdVerifiedUser>
               <h1>Thanks for purchasing </h1>
-              <h4>Order : {myOrderNumber.pop()}</h4>
+              <h4>Order : {myOrderNumber}</h4>
             </div>
           ) : (
             <div>
@@ -186,7 +189,7 @@ function Cart() {
                             className="proceed "
                             onClick={() => {
                               buyItems();
-                              isShowing(true);
+                              isLoading(true);
                             }}
                           >
                             Proceed

@@ -38,6 +38,7 @@
   left: 28%;
   animation: alert 5s;
 }
+
 @keyframes alert {
   0% {
     opacity: 0;

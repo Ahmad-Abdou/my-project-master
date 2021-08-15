@@ -22,6 +22,7 @@ import {
   BiPencil,
 } from "react-icons/bi";
 import NavbarCom from "./NavbarCom";
+import Robot from "./Robot";
 function Dashboard() {
   const [movieInfo, setMovieInfo] = useState([]);
   const [userCounter, setUserCounter] = useState(0);
@@ -71,7 +72,6 @@ function Dashboard() {
         console.log(err);
       });
   };
-
   const fetchUserProfile = () => {
     axios.get("http://localhost:8080/api/v1").then((res) => {
       setUserCounter(res.data.length);
@@ -92,6 +92,8 @@ function Dashboard() {
     setIsEditing(!isEditing);
     let myMovie = movieInfo.find((movie) => movie.id === id);
     setMovieData(myMovie);
+  };
+  const submitMyEdit = (id) => {
     axios
       .put(`http://localhost:8080/api/movie/edit/${id}`, movieData)
       .then((res) => {})
@@ -114,24 +116,26 @@ function Dashboard() {
         console.log(err);
       });
   };
-
   useEffect(() => {
     fetchUserProfile();
     fetchMovies();
     orderNumber();
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isEditing]);
 
   if (loading) {
     return (
       <AiOutlineLoading3Quarters className="loading-icon"></AiOutlineLoading3Quarters>
     );
   }
+
   return (
     <>
-      <Sidebar />
       <NavbarCom></NavbarCom>
+      <Sidebar />
+
+      <Robot></Robot>
       <Container className="dashboard-container">
         <Row className="item-row">
           <Col></Col>
@@ -183,8 +187,6 @@ function Dashboard() {
               <th className="table-heading">Title</th>
               <th className="table-heading">Price</th>
               <th className="table-heading">Category</th>
-              <th className="table-heading">Order Number</th>
-              <th></th>
             </tr>
           </thead>
           {movieInfo.map((movie) => {
@@ -199,7 +201,6 @@ function Dashboard() {
                   <td>{title}</td>
                   <td>{price}</td>
                   <td>{description}</td>
-                  <td>{myOrderNumber}</td>
                   <td>
                     <BiTrash
                       onClick={() => DeleteMovie(id)}
@@ -209,10 +210,6 @@ function Dashboard() {
                       onClick={() => EditMovie(id)}
                       className="edit-icon"
                     ></BiPencil>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
                     {isEditing && (
                       <Form
                         className="adding-movie-container"
@@ -263,21 +260,11 @@ function Dashboard() {
                           </Col>
                         </Row>
                         <Row>
-                          {/* <Col>
-                            <Form.File.Input
-                              className="field"
-                              name="image"
-                              value={newimage}
-                              onChange={changeHandler}
-                              placeholder="image"
-                            />
-                          </Col> */}
-                        </Row>
-                        <Row>
                           <Button
                             className="w-100 mt-3 border-warning"
                             variant="success"
                             type="submit"
+                            onSubmit={() => submitMyEdit(id)}
                           >
                             <h3>Add</h3>
                           </Button>

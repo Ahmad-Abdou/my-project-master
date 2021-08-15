@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Form, Button, Col, Row, Alert } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 import axios from "axios";
 import "../styling/movies.css";
 import Sidebar from "./Sidebar";
@@ -13,6 +13,7 @@ function Movies() {
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const { title, price, description, image } = movieData;
+  // eslint-disable-next-line
   const [isSubmited, setIsSubmited] = useState(false);
 
   const changeHandler = (e) => {
@@ -39,24 +40,23 @@ function Movies() {
 
       .then((res) => {
         setIsSubmited(true);
-
-        setTimeout(() => {
-          setIsSubmited(false);
-        }, 5000);
+        window.location.reload(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  useEffect(() => {}, []);
+
   return (
     <>
       <NavbarCom></NavbarCom>
       <Sidebar />
-      {isSubmited && (
-        <Alert className="my-alert" variant="success">
+      {/* {isSubmited && (
+        <Alert className="my-alert-movie" variant="success">
           Movie Added Successfully
         </Alert>
-      )}
+      )} */}
 
       <Form className="adding-movie" onSubmit={submitHandler}>
         <Row>
